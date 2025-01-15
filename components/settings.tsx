@@ -13,15 +13,20 @@ import {
 } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
+import { useTheme } from "next-themes";
 
 export function Settings() {
   const { settings, updateSettings } = useFocusStore();
+  const { setTheme } = useTheme();
 
   const handleSettingChange = (
     key: keyof typeof settings,
     value: string | number | boolean
   ) => {
     updateSettings({ [key]: value });
+    if (key === "theme") {
+      setTheme(value as string);
+    }
     toast.success("Settings updated successfully");
   };
 
@@ -82,10 +87,7 @@ export function Settings() {
           <Select
             value={settings.theme}
             onValueChange={(value) =>
-              handleSettingChange(
-                "theme",
-                value as "light" | "dark" | "system"
-              )
+              handleSettingChange("theme", value as "light" | "dark" | "system")
             }
           >
             <SelectTrigger>

@@ -2,7 +2,15 @@
 
 import { useFocusStore } from "@/lib/store";
 import { Card } from "@/components/ui/card";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+} from "recharts";
 import { format } from "date-fns";
 
 export function Analytics() {
@@ -34,17 +42,15 @@ export function Analytics() {
     }));
 
   const chartProps = {
-    width: "100%",
-    height: "100%",
     data: chartData,
     margin: { top: 10, right: 10, left: 10, bottom: 10 },
   };
 
   const axisProps = {
-    stroke: 'hsl(var(--border))',
+    stroke: "hsl(var(--border))",
     style: {
-      fontSize: '12px',
-      fontFamily: 'inherit',
+      fontSize: "12px",
+      fontFamily: "inherit",
     },
   };
 
@@ -69,9 +75,7 @@ export function Analytics() {
           <h3 className="text-sm font-medium text-muted-foreground">
             Completion Rate
           </h3>
-          <p className="text-2xl font-bold">
-            {Math.round(completionRate)}%
-          </p>
+          <p className="text-2xl font-bold">{Math.round(completionRate)}%</p>
         </Card>
       </div>
 
@@ -82,40 +86,36 @@ export function Analytics() {
         <div className="h-[300px]">
           <ResponsiveContainer>
             <BarChart {...chartProps}>
-              <CartesianGrid 
-                strokeDasharray="3 3" 
-                stroke="hsl(var(--border))" 
-                vertical={false} 
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="hsl(var(--border))"
+                vertical={false}
               />
-              <XAxis 
-                dataKey="date"
+              <XAxis dataKey="date" {...axisProps} tickMargin={8} />
+              <YAxis
                 {...axisProps}
                 tickMargin={8}
-              />
-              <YAxis 
-                {...axisProps}
-                tickMargin={8}
-                label={{ 
-                  value: 'Minutes',
+                label={{
+                  value: "Minutes",
                   angle: -90,
-                  position: 'insideLeft',
-                  style: { 
-                    fill: 'hsl(var(--muted-foreground))',
-                    textAnchor: 'middle',
+                  position: "insideLeft",
+                  style: {
+                    fill: "hsl(var(--muted-foreground))",
+                    textAnchor: "middle",
                   },
                   dy: -40,
                 }}
               />
-              <Tooltip 
-                cursor={{ fill: 'hsl(var(--muted))' }}
+              <Tooltip
+                cursor={{ fill: "hsl(var(--muted))" }}
                 contentStyle={{
-                  backgroundColor: 'hsl(var(--background))',
-                  border: '1px solid hsl(var(--border))',
-                  borderRadius: 'var(--radius)',
-                  padding: '8px',
+                  backgroundColor: "hsl(var(--background))",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "var(--radius)",
+                  padding: "8px",
                 }}
-                labelStyle={{ color: 'hsl(var(--foreground))' }}
-                itemStyle={{ color: 'hsl(var(--foreground))' }}
+                labelStyle={{ color: "hsl(var(--foreground))" }}
+                itemStyle={{ color: "hsl(var(--foreground))" }}
               />
               <Bar
                 dataKey="minutes"
