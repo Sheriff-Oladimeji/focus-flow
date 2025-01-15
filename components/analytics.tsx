@@ -84,7 +84,7 @@ export function Analytics() {
           Focus Time Last 7 Days
         </h3>
         <div className="h-[300px]">
-          <ResponsiveContainer>
+          <ResponsiveContainer width="100%" height="100%">
             <BarChart {...chartProps}>
               <CartesianGrid
                 strokeDasharray="3 3"
